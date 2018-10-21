@@ -8,31 +8,95 @@
     
     <link rel="stylesheet" href="/Styles/Kesco.V4/JS/themes/default/style.min.css" />
 	<script src='/Styles/Kesco.V4/JS/jstree.min.js' type='text/javascript'></script>
+       <style type="text/css">
+           #divContainer {
+               width:99%;
+               margin-top:10px;
+               
+           }
+           #divMyTreeContainer {
+               
+               min-width:300px;
+               min-height: 300px;
+               width:300px;
+               max-width:70%;
+               float: left;
+               
+           }
+           #divMyTree {
+              
+               border-right: 2px dotted dimgray;
+               min-width:300px;
+               min-height: 300px;
+               
+               overflow:auto;
+           }
+          
+           #divMyData {  
+                padding-left:10px;
+                overflow:auto;
+
+           }
+          
+    </style>
 </head>
 <body>
-    <div id="html" class="demo">
-		<ul>
-			<li data-jstree='{ "opened" : true }'>Root node
-				<ul>
-					<li data-jstree='{ "selected" : true }'>Child node 1</li>
-					<li>Child node 2</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+    <div id="divContainer" >
+        <div id="divMyTreeContainer" class="ui-widget-content">
+            <div id="divMyTree"></div>
+        </div>
+        <div id="divMyData" >           
+                         
+        </div>
+    </div>
 </body>
-<script>
-    $(document).ready(function() {
+<script type="text/javascript">
+    $("#divMyTreeContainer").resizable({ handles: 'e' });
 
-        $("#html").jstree({
+    $(document).ready(function () {
+
+        $("#divMyTree").jstree({
             'core': {
                 'data': {
-                    "url": "LocationJsonData.ashx",
-                    "dataType": "json" // needed only if you do not supply JSON headers
+                    'url': function (node) {
+                        var uri = 'LocationJsonData.ashx';
+                        return uri;
+                    },
+                    'data': function (node) {
+                        return { 'loadid': node.id };
+                    }
                 }
             }
         });
+        $('#divMyTree').on("select_node.jstree", function (e, data) {
+            $('#divMyData').html("node_id: " + data.node.id + " -> " + "text: " + data.instance.get_path(data.node, '/'));
 
+        });
+
+        $("#divMyTree").bind("hover_node.jstree", function (e, data) {            
+            $("#"+data.node.id ).attr("title",data.node.id + " -> " +data.node.text);
+        });
+
+        function handleResize() {
+            var h = $(window).height();
+            
+
+            $('#divContainer').css({ 'height': (h - 18) + 'px' });
+            $('#divMyTree').css({ 'height': (h - 20) + 'px' });
+            $('#divMyData').css({ 'height': (h - 20) + 'px' });
+            
+            
+        }
+
+        $(function () {
+            handleResize();
+
+            $(window).resize(function () {
+                handleResize();
+            });
+        });
+
+        
 
     });
 </script>

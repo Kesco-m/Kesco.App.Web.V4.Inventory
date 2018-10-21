@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.DALC", "Kesco.Lib.DALC\Kesco.Lib.DALC.csproj", "{5F647577-BC44-41DE-AFBE-BC47C91548F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Entities", "Kesco.Lib.Entities\Kesco.Lib.Entities.csproj", "{DEAA04C2-AFB2-4AD0-B161-A5BF6C26A9DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Localization", "Kesco.Lib.Localization\Kesco.Lib.Localization.csproj", "{895BE7DB-796B-40DD-B338-01B9C53F8308}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Web.Comet", "Kesco.Lib.Web.Comet\Kesco.Lib.Web.Comet\Kesco.Lib.Web.Comet.csproj", "{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Web.Controls.V4", "Kesco.Lib.Web.Controls.V4\Kesco.Lib.Web.Controls.V4.csproj", "{C24FDAB8-D076-4F0C-8932-DB8160E4C4EF}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.BaseExtention", "Kesco.Lib.BaseExtention\Kesco.Lib.BaseExtention.csproj", "{D26C8D93-C51B-4F61-ADA8-8527A18E4C41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.App.Web.Inventory", "Inventory\Kesco.App.Web.Inventory.csproj", "{71C3446E-27A0-4072-936B-0564C69B9699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Web.Comet", "Kesco.Lib.Web.Comet\Kesco.Lib.Web.Comet.csproj", "{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,16 +73,6 @@ Global
 		{895BE7DB-796B-40DD-B338-01B9C53F8308}.Release|Itanium.ActiveCfg = Release|Any CPU
 		{895BE7DB-796B-40DD-B338-01B9C53F8308}.Release|x64.ActiveCfg = Release|Any CPU
 		{895BE7DB-796B-40DD-B338-01B9C53F8308}.Release|x86.ActiveCfg = Release|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Itanium.ActiveCfg = Debug|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Itanium.ActiveCfg = Release|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x64.ActiveCfg = Release|Any CPU
-		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x86.ActiveCfg = Release|Any CPU
 		{C24FDAB8-D076-4F0C-8932-DB8160E4C4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C24FDAB8-D076-4F0C-8932-DB8160E4C4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C24FDAB8-D076-4F0C-8932-DB8160E4C4EF}.Debug|Itanium.ActiveCfg = Debug|Any CPU
@@ -153,8 +145,27 @@ Global
 		{71C3446E-27A0-4072-936B-0564C69B9699}.Release|Itanium.ActiveCfg = Release|Any CPU
 		{71C3446E-27A0-4072-936B-0564C69B9699}.Release|x64.ActiveCfg = Release|Any CPU
 		{71C3446E-27A0-4072-936B-0564C69B9699}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Itanium.ActiveCfg = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|Itanium.Build.0 = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Itanium.ActiveCfg = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|Itanium.Build.0 = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x64.Build.0 = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F676BC99-8435-41DC-A76F-25BB09D68E8B}
 	EndGlobalSection
 EndGlobal
