@@ -10,7 +10,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kesco.App.Web.Inventory</RootNamespace>
+    <RootNamespace>Inventory</RootNamespace>
     <AssemblyName>Inventory</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
@@ -52,78 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Kesco.Locations.js" />
-    <Content Include="Locations.aspx" />
-    <Content Include="MainMenu.ascx" />
+    <Content Include="Location.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Locations.aspx.cs">
-      <DependentUpon>Locations.aspx</DependentUpon>
+    <Compile Include="Location.aspx.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Locations.aspx.designer.cs">
-      <DependentUpon>Locations.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LocationJsonData.ashx.cs">
-      <DependentUpon>LocationJsonData.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="MainMenu.ascx.cs">
-      <DependentUpon>MainMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainMenu.ascx.designer.cs">
-      <DependentUpon>MainMenu.ascx</DependentUpon>
+    <Compile Include="Location.aspx.designer.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kesco.Lib.BaseExtention\Kesco.Lib.BaseExtention.csproj">
-      <Project>{D26C8D93-C51B-4F61-ADA8-8527A18E4C41}</Project>
-      <Name>Kesco.Lib.BaseExtention</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Convert\Kesco.Lib.ConvertExtention.csproj">
-      <Project>{9C6AB086-FDB5-4FBC-B358-092C47F6B4F4}</Project>
-      <Name>Kesco.Lib.ConvertExtention</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.DALC\Kesco.Lib.DALC.csproj">
-      <Project>{5F647577-BC44-41DE-AFBE-BC47C91548F1}</Project>
-      <Name>Kesco.Lib.DALC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Entities\Kesco.Lib.Entities.csproj">
-      <Project>{DEAA04C2-AFB2-4AD0-B161-A5BF6C26A9DB}</Project>
-      <Name>Kesco.Lib.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Localization\Kesco.Lib.Localization.csproj">
-      <Project>{895BE7DB-796B-40DD-B338-01B9C53F8308}</Project>
-      <Name>Kesco.Lib.Localization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
-      <Project>{FC924B22-160A-4F7F-98EB-63E420DE694E}</Project>
-      <Name>Kesco.Lib.Log</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Web.Comet\Kesco.Lib.Web.Comet\Kesco.Lib.Web.Comet.csproj">
-      <Project>{EB32DBFE-59E0-4F6C-A718-BE9BA708C64F}</Project>
-      <Name>Kesco.Lib.Web.Comet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Web.Controls.V4\Kesco.Lib.Web.Controls.V4.csproj">
-      <Project>{C24FDAB8-D076-4F0C-8932-DB8160E4C4EF}</Project>
-      <Name>Kesco.Lib.Web.Controls.V4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Web.DBSelect.V4\Kesco.Lib.Web.DBSelect.V4.csproj">
-      <Project>{874E2035-E05B-463E-805D-3B9944A34AF9}</Project>
-      <Name>Kesco.Lib.Web.DBSelect.V4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kesco.Lib.Web.Settings\Kesco.Lib.Web.Settings.csproj">
-      <Project>{26BB8CDB-8901-44BF-85BC-864F97941C60}</Project>
-      <Name>Kesco.Lib.Web.Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LocationJsonData.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

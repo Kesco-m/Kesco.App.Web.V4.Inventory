@@ -36,11 +36,11 @@ SELECT * FROM Tbl
 
         private string GetTreedata(int loadid)
         {
-            var sql = "SELECT КодРасположения Id, R-L ЕстьДети, Расположение Text, ISNULL(Parent,0) ParentId, CASE WHEN Офис=1 THEN '/styles/house.gif' ELSE 'jstree-file' END icon FROM Расположения WHERE Parent IS NULL ORDER BY L";
+            var sql = "SELECT КодРасположения Id, R-L ЕстьДети, Расположение Text, ISNULL(Parent,0) ParentId, CASE WHEN Офис=1 THEN '/styles/house.gif' ELSE 'jstree-file' END icon FROM vwРасположения WHERE Parent IS NULL ORDER BY L";
 
             if (loadid != 0)
             {
-                sql = "SELECT КодРасположения Id, R-L ЕстьДети, Расположение Text, ISNULL(Parent,0) ParentId, CASE WHEN Офис=1 THEN '/styles/house.gif' ELSE 'jstree-file' END icon FROM Расположения WHERE Parent =" + loadid + " ORDER BY L";
+                sql = "SELECT КодРасположения Id, R-L ЕстьДети, Расположение Text, ISNULL(Parent,0) ParentId, CASE WHEN Офис=1 THEN '/styles/house.gif' ELSE 'jstree-file' END icon FROM vwРасположения WHERE Parent =" + loadid + " ORDER BY L";
             }
 
             var dt = Kesco.Lib.DALC.DBManager.GetData(sql, Kesco.Lib.Web.Settings.Config.DS_user);
@@ -50,7 +50,7 @@ SELECT * FROM Tbl
                 root = new Node { id = "0", children = { }, text = "Расположения", state = new NodeState { opened = true, selected = false, loaded = true } };
             else
             {
-                sql = "SELECT Расположение FROM Расположения WHERE КодРасположения=@id";
+                sql = "SELECT Расположение FROM vwРасположения WHERE КодРасположения=@id";
                 var valueText=Kesco.Lib.DALC.DBManager.ExecuteScalar(sql, loadid, System.Data.CommandType.Text, Kesco.Lib.Web.Settings.Config.DS_user);
                 root = new Node { id = loadid.ToString(), text = valueText.ToString(), children = { }, state = new NodeState { opened = true, selected = false, loaded = true } };
             }
