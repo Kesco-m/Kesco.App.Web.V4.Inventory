@@ -16,13 +16,12 @@ namespace Kesco.App.Web.Inventory
     {
         private Location _location;
         protected override string HelpUrl { get; set; }
+        protected int LocationId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             btnSocketAdd.OnClick = string.Format("cmd('cmd','SocketAdd');");
             btnSocketAdd.Text = "Добавить розетку" + "&nbsp;(Ins)";
-
-           
         }
         
         protected override void ProcessCommand(string cmd, NameValueCollection param)
@@ -38,6 +37,24 @@ namespace Kesco.App.Web.Inventory
                     break;
                 case "SocketAdd":
                     ShowMessage("SocketAdd");
+                    break;
+                case "RenderUserCount":
+                    LoadUserCount(int.Parse(param["Id"]));
+                    break;
+                case "AddLocation":
+                case "EditLocation":
+                    LocationId = int.Parse(param["Id"]);
+                    var sqlParams = new Dictionary<string, object> { { "@id", LocationId } };
+                    var dt = DBManager.GetData(SQLQueries.SELECT_РасположениеПоID, Config.DS_user, CommandType.Text, sqlParams);
+                    if (dt.Rows.Count > 0)
+                    {
+                        tbNode.Value = cmd=="AddLocation" ? "" : dt.Rows[0]["Расположение"].ToString();
+                        divLocationPatch.Value = dt.Rows[0]["РасположениеPath1"].ToString().Replace("_", " "); ;
+                        JS.Write("locationEdit_dialogShow('{0}','{1}','{2}','{3}');", cmd == "AddLocation" ? "Добавление" : "Редактирование" + " расположения", "Сохранить", "Отмена", cmd);
+                    }
+                    break;
+                case "SetLocation":
+                    SaveData(param["type"]);
                     break;
                 default:
                     base.ProcessCommand(cmd, param);
@@ -226,6 +243,48 @@ namespace Kesco.App.Web.Inventory
             gridEquipment.Settings.SetColumnHrefEmployee("Сотрудник", "КодСотрудника");
 
             gridEquipment.RefreshGridData();
+        }
+
+        private void LoadUserCount(int id)
+        {
+            var userList = string.Empty;
+            var sqlParams = new Dictionary<string, object> {{"@КодРасположения", id}};
+            var dt = DBManager.GetData(SQLQueries.SELECT_РаботающиеСотрудникиВРасположении, Config.DS_user, CommandType.Text, sqlParams);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                userList += dt.Rows[i]["Сотрудник"] + "\\r\\n";
+            }
+
+            if (userList.Length > 0)
+            {
+                JS.Write("$('#img_{0}').attr('title','{1}');", id, userList);
+            }
+        }
+
+        private void SaveData(string type)
+        {
+            if (type == "AddLocation")
+            {
+                var sqlParams = new Dictionary<string, object>
+                {
+                    {"@Расположение", tbNode.Value},
+                    {"@РабочееМесто", 0},
+                    {"@Parent", LocationId}
+                };
+                DBManager.ExecuteNonQuery(SQLQueries.INSERT_Расположения, CommandType.Text, Config.DS_user, sqlParams);
+            }
+            else
+            {
+                var sqlParams = new Dictionary<string, object>
+                {
+                    {"@КодРасположения", LocationId},
+                    {"@Расположение", tbNode.Value}
+                };
+                DBManager.ExecuteNonQuery(SQLQueries.UPDATE_Расположения, CommandType.Text, Config.DS_user, sqlParams);                
+            }
+            JS.Write("v4_closeLocationForm();");
+            LoadDataLocation(LocationId);
         }
     }
 }

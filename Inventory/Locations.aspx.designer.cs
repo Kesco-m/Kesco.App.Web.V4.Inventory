@@ -56,5 +56,23 @@ namespace Kesco.App.Web.Inventory {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::Kesco.Lib.Web.Controls.V4.Grid.Grid gridEquipment;
+        
+        /// <summary>
+        /// divLocationPatch элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::Kesco.Lib.Web.Controls.V4.Div divLocationPatch;
+        
+        /// <summary>
+        /// tbNode элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::Kesco.Lib.Web.Controls.V4.TextBox tbNode;
     }
 }

@@ -30,7 +30,7 @@
                width:300px;
                max-width:70%;
                float: left;
-               
+
            }
            #divMyTree {
               
@@ -62,10 +62,18 @@
            .marginT {
                margin-top: 10px;
            }
-          
+           
     </style>
 </head>
 <body>
+
+    <form id="mvcDialogResult" method="post">
+        <input type="hidden" name="escaped" value="0" />
+		<input type="hidden" name="control" value="" />
+        <input type="hidden" name="multiReturn" value="" />
+		<input type="hidden" name="value" value="" />
+    </form>
+
     <uc:mainmenu id="MainMenu1" runat="server"></uc:mainmenu>
     <div style="margin-top: 10px; margin-left:11px; font-weight: bold;">Расположения и розетки</div>
     <div id="divContainer" >
@@ -93,7 +101,7 @@
                 <div id="tabs-2">
                      <v4control:Button ID="btnSocketAdd" runat="server"></v4control:Button>
                     <div id = "divSockets" style="margin-top: 10px">
-                        <csg:Grid runat="server" ID="gridSockets" MarginBottom="223" ShowGroupPanel = "True" />            
+                        <csg:Grid runat="server" ID="gridSockets" MarginBottom="223" ShowGroupPanel = "True" />   
                     </div>
                 </div> 
                 <div id="tabs-3">
@@ -103,7 +111,8 @@
                 </div>
                 <div id="tabs-4">
                     <div id = "divEquipment">
-                        <csg:Grid runat="server" ID="gridEquipment" MarginBottom="190" />            
+                                 
+                        <csg:Grid runat="server" ID="gridEquipment" MarginBottom="190" ShowGroupPanel = "True" /> 
                     </div>
                 </div>
 
@@ -111,36 +120,61 @@
         </div>
     </div>
     
-    <div id="draggable" class="ui-widget-content" style="width:50px" >
-          <p>Drag me to my target</p>
-    </div>
- 
-    <div id="droppable" class="ui-widget-header" style="width:50px">
-      <p>Drop here</p>
+    <div id="divEditNode" style="display: none;">
+        <table cellspacing="0" cellpadding="5" border="0">
+            <tr>
+                <td colspan="2"><v4control:Div runat="server" ID="divLocationPatch"></v4control:Div> </td>
+            </tr>
+            <tr>
+                <td>Расположение:</td>            
+                <td><v4control:TextBox ID="tbNode" runat="server" Width="400px"></v4control:TextBox></td>
+            </tr>
+        </table>
     </div>
 
 </body>
 <script type="text/javascript">
     $("#divMyTreeContainer").resizable({ handles: 'e' });
 
+    function customMenu(node) {
+        var items = {
+            'item1': {
+                'icon': '/styles/New.gif',
+                'label': 'Добавить',
+                'action': function () { cmd('cmd', 'AddLocation', 'Id', node.id); }
+            },
+            'item2': {
+                'icon': '/styles/Edit.gif',
+                'label': 'Переименовать',
+                'action': function () { cmd('cmd', 'EditLocation', 'Id', node.id); }
+            }
+        }
+
+        return items;
+    }    
+
     $(document).ready(function () {
 
         $("#divMyTree").jstree({
-            'plugins': ["state"],
+            'plugins': ["state", "contextmenu"],
+            'icon': true,
+            'contextmenu' : {'items' : customMenu},
             'core': {
+                'themes': { 'icons': false },
                 'data': {
-                    'url': function (node) {
+                    'url': function(node) {
                         var uri = 'LocationJsonData.ashx';
                         return uri;
                     },
-                    'data': function (node) {
-                        return { 'loadid': node.id };
+                    'data': function(node) {
+                        return { 'loadid': node.id, 'return': '<%=Request.QueryString["return"]%>' };
                     },
-                    "check_callback": true
+                    'check_callback': true
                 }
             }
-            
         });
+
+        
 
         $('#divMyTree').bind("select_node.jstree", function (e, data) {
             Wait.render(true);
@@ -148,7 +182,7 @@
         });
 
         $("#divMyTree").bind("hover_node.jstree", function (e, data) {            
-            $("#"+data.node.id ).attr("title",data.node.id + " -> " +data.node.text);
+            $("#"+data.node.id ).attr("title","Код="+ data.node.id);
         });
 
         function handleResize() {
@@ -184,7 +218,6 @@
     });
 
     $(function () {
-        $("#draggable").draggable();
         $("#droppable").droppable({
             drop: function (event, ui) {
                 $(this)
@@ -194,7 +227,6 @@
             }
         });
     });
-
 
     });
 </script>
