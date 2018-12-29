@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Runtime.Remoting.Activation;
 using System.Text;
 using System.Web;
@@ -74,9 +75,22 @@ SELECT * FROM Tbl
                 root = new Node { id = "0", children = { }, text = "Расположения", state = new NodeState { opened = true, selected = false, loaded = true } };
             else
             {
-                sql = "SELECT Расположение FROM vwРасположения WHERE КодРасположения=@id";
-                var valueText=Kesco.Lib.DALC.DBManager.ExecuteScalar(sql, loadid, System.Data.CommandType.Text, Kesco.Lib.Web.Settings.Config.DS_user);
-                root = new Node { id = loadid.ToString(), text = valueText.ToString(), children = { }, state = new NodeState { opened = true, selected = false, loaded = true } };
+                sql = @"SELECT TOP 1 r.КодРасположения Id, r.R-L ЕстьДети, r.Расположение Text, ISNULL(r.Parent,0) ParentId, r.Офис Office, r.РабочееМесто WorkPlace, ISNULL(x.ЕстьСотрудники,0) ЕстьСотрудники
+                        FROM vwРасположения r 
+                        LEFT JOIN (SELECT count(РабочиеМеста.КодРасположения) ЕстьСотрудники,РабочиеМеста.КодРасположения
+									FROM РабочиеМеста
+									INNER JOIN Сотрудники ON РабочиеМеста.КодСотрудника = Сотрудники.КодСотрудника
+									WHERE Сотрудники.Состояние=0
+									GROUP BY КодРасположения) x ON r.КодРасположения = x.КодРасположения
+                       WHERE r.КодРасположения=" + loadid;
+                var rootNode = Kesco.Lib.DALC.DBManager.GetData(sql, Kesco.Lib.Web.Settings.Config.DS_user).Rows[0];
+                root = new Node
+                {
+                    id = loadid.ToString(),
+                    text = GetIconByOffice(loadid.ToString(), rootNode["Office"].ToString(), rootNode["WorkPlace"].ToString()) + rootNode["text"] + GetUserIcon(loadid.ToString(), rootNode["ЕстьСотрудники"].ToString()), 
+                    children = { }, 
+                    state = new NodeState { opened = true, selected = false, loaded = true }
+                };
             }
 
             var view = new System.Data.DataView(dt);

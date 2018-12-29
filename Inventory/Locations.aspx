@@ -158,7 +158,7 @@
         $("#divMyTree").jstree({
             'plugins': ["state", "contextmenu"],
             'icon': true,
-            'contextmenu' : {'items' : customMenu},
+            'contextmenu': { 'items': customMenu },
             'core': {
                 'themes': { 'icons': false },
                 'data': {
@@ -173,8 +173,6 @@
                 }
             }
         });
-
-        
 
         $('#divMyTree').bind("select_node.jstree", function (e, data) {
             Wait.render(true);
@@ -215,19 +213,20 @@
 
                 }
             }
-    });
-
-    $(function () {
-        $("#droppable").droppable({
-            drop: function (event, ui) {
-                $(this)
-          .addClass("ui-state-highlight")
-          .find("p")
-            .html("Dropped!");
-            }
         });
-    });
+
+        $(function () {
+            $("#droppable").droppable({
+                drop: function (event, ui) {
+                    $(this)
+              .addClass("ui-state-highlight")
+              .find("p")
+                .html("Dropped!");
+                }
+            });
+        });
 
     });
+
 </script>
 </html>

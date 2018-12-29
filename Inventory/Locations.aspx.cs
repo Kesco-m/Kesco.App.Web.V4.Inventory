@@ -285,6 +285,12 @@ namespace Kesco.App.Web.Inventory
             }
             JS.Write("v4_closeLocationForm();");
             LoadDataLocation(LocationId);
+
+            //JS.Write("TreeReload();");
+            //JS.Write("$('#divMyTree').jstree(true).refresh(true);");
+            //$('#treeId').jstree(true).settings.core.data = newData;
+            //$('#treeId').jstree(true).refresh();
+
         }
     }
 }
