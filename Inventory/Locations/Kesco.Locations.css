@@ -1,0 +1,76 @@
+﻿iframe {
+    background-color: transparent;
+    border: none;
+}
+
+#divContainer {
+    margin-top:10px;
+    margin-left:11px;
+    margin-right:11px;
+}
+
+#divMyTreeContainer {
+    min-width:310px;
+    min-height: 10px;
+    width:350px;
+    max-width:70%;
+    float: left;
+}
+         
+#divMyData {  
+    padding-left:10px;
+    overflow:auto;
+}
+         
+/*++++++++++++++++++++++++++++++++++++++++++++++++++*/
+#divLocationInfo 
+{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+            
+#divSocketInfo 
+{
+    font-weight: bold;
+}
+           
+.marginT {
+    margin-top: 10px;
+}
+           
+div.label
+{
+    width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+           
+div.predicate_block
+{
+    min-height: 20px;
+    display: block;
+    margin-top:5px;
+}
+
+        
+/*Блок включающий в себя метку и элемент управления, который может размещаться на одной линии с другими блоками с отступом*/
+div.inline_predicate_block_text
+{
+    display: block;
+    display: inline-block;
+    vertical-align: middle;
+}
+           
+div.area_block
+{
+    min-height: 60px;
+    display: block;
+    margin-top:5px;
+    vertical-align: middle;
+}          
+
+div.aligned_control
+{
+    vertical-align: middle;
+    margin-right:0px;
+}             

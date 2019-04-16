@@ -1,0 +1,49 @@
+﻿#divContainer {
+    margin-top: 10px;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+/* Контейнер, содержащий дерево */
+#divMyTreeContainer {
+    min-width: 310px;
+    min-height: 10px;
+    max-width: 70%;
+    float: left;
+}
+
+#divMyData {
+    overflow: auto;
+}
+
+.marginT {
+    margin-top: 10px;
+}
+
+div.label {
+    width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div.predicate_block {
+    min-height: 20px;
+    display: block;
+    margin-top: 5px;
+}
+
+div.area_block {
+    min-height: 60px;
+    display: block;
+    margin-top: 5px;
+    vertical-align: middle;
+}
+
+div.aligned_control {
+    vertical-align: middle;
+    margin-right: 0px;
+}
+
+.marginD {
+    margin-left: 3px;
+}
